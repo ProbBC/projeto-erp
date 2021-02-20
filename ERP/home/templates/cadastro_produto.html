@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+{% block title %}Cadastrar Produto{% endblock %}
+{% block content %}
+    <section class="mt-5">
+      <div class="container">
+           <!--Produto-->
+        <div class="row">
+          <div class="col-12 col-md-12 mt-5">
+              {% if form.errors %}
+                  {% for field in form %}
+                      {% for error in field.errors %}
+                          <div>
+                              <strong>{{ error|escape }}</strong>
+                          </div>
+                      {% endfor %}
+                  {% endfor %}
+                  {% for error in form.non_field_errors %}
+                      <div>
+                          <strong>{{ error|escape }}</strong>
+                      </div>
+                  {% endfor %}
+              {% endif %}
+            <!--Formulario-->
+            <form class="needs-validation" method="post" action="{% url 'cadastro_produto' %}" novalidate>
+                {% csrf_token %}
+
+
+              <!-- Dados do Produto-->
+              <div class="col-10 col-md-10 fundoBranco">
+                  <nav class="navbar">
+                      <span class="navbar-text cor">
+                        Dados do Produto
+                      </span>
+                    </nav>
+              </div>
+
+              <!-- Forms do Produto-->
+              <div class="form-row fundoBranco2 ">
+                <div class="col-12 col-md-6 mt-5">
+                  <div class="label-float">
+                    <input type="text" class="form-control" name ="descricao" id="validationTooltip18" placeholder=" " required/>
+                    <label for="validationTooltip18">Nome do Produto</label>
+                    <div class="invalid-tooltip">
+                      Insira o nome do produto
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12 col-md-3 mt-5">
+                  <div class="label-float">
+                    <input type="text" class="form-control" name="preco_venda" id="validationTooltip19" placeholder=" " required/>
+                    <label for="validationTooltip19">Preço de Venda</label>
+                    <div class="invalid-tooltip">
+                      Insira o preço
+                    </div>
+                </div>
+                </div>
+                <div class="col-12 col-md-3 mt-5">
+                  <div class="label-float">
+                    <input type="text" class="form-control" name="gtin" id="validationTooltip20" placeholder=" "/>
+                    <label for="validationTooltip20">Código GTIN</label>
+                    <div class="invalid-tooltip">
+                      Insira a quantidade
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12 col-md-4 mt-5">
+                  <div class="label-float">
+                    <input type="text" class="form-control" name="codigo" id="validationTooltip21" placeholder=" "/>
+                    <label for="validationTooltip21">Código Sku</label>
+                    <div class="invalid-tooltip">
+                      Insira o código SKU
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12 col-md-4 mt-5">
+                  <div class="label-float">
+                    <input type="text" class="form-control" name="data_validade" id="validationTooltip22" placeholder=" "/>
+                    <label for="validationTooltip22">Data de Validade</label>
+                    <div class="invalid-tooltip">
+                      Insira a data de validade
+                    </div>
+                </div>
+                </div>
+                <div class="col-12 col-md-4 mt-5">
+              <div class="label-float">
+                <input type="text" class="form-control" name="condicao" id="validationTooltip23" placeholder=" "/>
+                <label for="validationTooltip23">Condição</label>
+                <div class="invalid-tooltip">
+                  Insira a condição
+                </div>
+            </div>
+                </div>
+              </div>
+
+              <!-- Dados do Fabricante-->
+              <div class="col-10 col-md-10 fundoBranco mt-5">
+                  <nav class="navbar">
+                      <span class="navbar-text cor">
+                        Dados do Fabricante
+                      </span>
+                    </nav>
+              </div>
+
+              <!-- Forms do Fabricante-->
+              <div class="form-row fundoBranco2 ">
+                <div class="col-12 col-md-6 mt-5">
+                  <div class="label-float">
+                    <input type="text" class="form-control" name="validationTooltip24" id="validationTooltip24" placeholder=" "/>
+                    <label for="validationTooltip24">Nome do Fornecedor</label>
+                    <div class="invalid-tooltip">
+                      Insira o nome do fornecedor
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12 col-md-6 mt-5">
+                    <div class="label-float">
+                      <input type="text" class="form-control" name="validationTooltip25" id="validationTooltip25" placeholder=" "/>
+                      <label for="validationTooltip25">Fabricante</label>
+                      <div class="invalid-tooltip">
+                        Insira o fabricante
+                      </div>
+                  </div>
+                </div>
+                <div class="col-12 col-md-3 mt-5">
+                    <div class="label-float">
+                      <input type="text" class="form-control" name="validationTooltip26" id="validationTooltip26" placeholder=" "/>
+                      <label for="validationTooltip26">Código do Fabricante</label>
+                      <div class="invalid-tooltip">
+                        Insira a quantidade
+                      </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-3 mt-5">
+                    <div class="label-float">
+                      <input type="text" class="form-control" name="validationTooltip27" id="validationTooltip27" placeholder=" "/>
+                      <label for="validationTooltip27">Custo</label>
+                      <div class="invalid-tooltip">
+                        Insira o custo
+                      </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-3 mt-5">
+                    <div class="label-float">
+                      <input type="text" class="form-control" name="validationTooltip28" id="validationTooltip28" placeholder=" "/>
+                      <label for="validationTooltip28">Marca</label>
+                      <div class="invalid-tooltip">
+                        Insira a marca
+                      </div>
+                  </div>
+                </div>
+                <div class="col-12 col-md-3 mt-5">
+                  <div class="label-float">
+                    <input type="text" class="form-control" name="validationTooltip29" id="validationTooltip29" placeholder=" "/>
+                    <label for="validationTooltip29">Garantia</label>
+                    <div class="invalid-tooltip">
+                      Insira a marca
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- cabeçalho imagem-->
+              <div class="col-10 col-md-10 fundoBranco mt-5">
+                <nav class="navbar">
+                    <span class="navbar-text cor">
+                      Imagens
+                    </span>
+                  </nav>
+              </div>
+
+              <!-- Forms imagem-->
+              <div class="form-row fundoBranco2 imagem">
+              <div class="col-12 col-md-12 mt-5">
+                <div class="custom-file">
+                  <input type="file" class="custom-file-input" id="customFileLang" lang="es">
+                  <label class="custom-file-label" for="customFileLang">Selecionar imagens</label>
+                </div>
+              </div>
+              <div class="col-12 col-md-3 mt-3">
+                <img src="../Componentes/img/photo-of-a-wooden-bookshelf-2883049.jpg" onmouseover="bigImg(this)" onmouseout="normalImg(this)" alt="">
+              </div>
+              <div class="col-12 col-md-3 mt-3">
+                <img src="../Componentes/img/train-with-smoke-507410.jpg" onmouseover="bigImg(this)" onmouseout="normalImg(this)" alt="">
+              </div>
+              <div class="col-12 col-md-3 mt-3">
+                <img src="../Componentes/img/cars-road-vehicles-sky-172074.jpg" onmouseover="bigImg(this)" onmouseout="normalImg(this)" alt="">
+              </div>
+              <div class="col-12 col-md-12 mt-5">
+                <button class="btn btn-primary botoes" type="submit">Cadastrar</button>
+                <button class="btn btn-danger botoes" data-toggle="modal" data-target="#exampleModal" type="button">Cancelar</button>
+              </div>
+              </div>
+            </form>
+          </div>
+      </div>
+    </section>
+
+    <!-- Modal Cancelar-->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Cancelar Cadastro</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            Tem certeza que deseja cancelar o cadastro ?
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+            <button type="button" class="btn btn-primary">Confirmar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endblock %}

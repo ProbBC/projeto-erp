@@ -1,0 +1,6 @@
+{% autoescape off %}
+Olá {{ user.first_name }},
+Este é o seu código de ativação: {{ uid }}@{{ token }}
+Ou ative clicando neste link:
+http://{{ domain }}/confirmar_cadastro?codigo={{ uid }}@{{ token }}
+{% endautoescape %}

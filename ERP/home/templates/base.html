@@ -1,0 +1,73 @@
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--css-->
+    <link rel="stylesheet" href="../../static/assets/Bootstrap/css/bootstrap.min.css"/>
+
+    <link rel="stylesheet" href="../../static/assets/css/erro404.css">
+    <!--Icons-->
+    <link rel="stylesheet" href="../../static/assets/icons/fontawesome-free-5.12.1-web/css/all.css">
+    <title>{% block title %}ERP{% endblock %}</title>
+</head>
+<body class="bg-purple">
+
+  <!--Cabeçalho -->
+  <header>
+    <div class="container-fluid">
+    <div class="stars navbar-expand-lg">
+      <div class="custom-navbar">
+        <div class="brand-logo">
+            <img src="http://salehriaz.com/404Page/img/logo.svg" width="80px">
+        </div>
+          <div class="navbar-links">
+              <ul>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle visu" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Produtos
+                  </a>
+                  <div class="dropdown-menu subvisu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="{% url 'cadastro_produto' %}">Cadastrar Produto</a>
+                    <a class="dropdown-item" href="{% url 'listar_produtos' %}">Listar Produtos</a>
+                    <a class="dropdown-item" href="{% url 'listar_estoque' %}">Controle de Estoque</a>
+                </li>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle visu2" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Vendedor
+                  </a>
+                  <div class="dropdown-menu subvisu2" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="{% url 'cadastrar_vendedor' %}">Cadastrar Vendedor</a>
+                    <a class="dropdown-item" href="{% url 'listar_vendedores' %}">Listar Vendedores</a>
+                </li>
+                <li>
+                  <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Frente de Caixa
+                  </a>
+                </li>
+              </ul>
+          </div>
+      </div>
+    </div>
+  </div>
+  </header>
+  {% block content %}
+  {% endblock %}
+  <!--Footer-->
+  <footer class="mt-4" id="myFooter">
+    <div class="footer-social">
+      <a href="" class="social-icons"><i class="fab fa-facebook"></i>/gustavocescon7</a>
+        <a href="" class="social-icons"><i class="fab fa-instagram ml-3"></i>/gustavo.cescon</a>
+        <a href="" class="social-icons"><i class="fab fa-youtube ml-3"></i>/gustavocescon</a>
+        <a href="" class="social-icons"><i class="fab fa-twitter ml-3"></i>/gstvcescon</a>
+      <p class="footer-copyright mt-3">© 2020 Copyright - Gustavo Cescon</p>
+    </div>
+  </footer>
+  <!--Fim footer-->
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="../../static/assets/Bootstrap/js/jquery-3.4.1.slim.min.js"></script>
+  <script src="../../static/assets/Bootstrap/js/popper.min.js"></script>
+  <script src="../../static/assets/Bootstrap/js/bootstrap.min.js"></script>
+  <script src="../../static/assets/scripts/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,227 @@
+body, textarea, select{
+    color: #202124 !important;
+    font-family: roboto,'Noto Sans Myanmar UI',arial,sans-serif !important ;
+}
+.header-paralax {
+    background-image: url('../img/photo-of-a-wooden-bookshelf-2883049.jpg');
+    background-position: center top;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    color: #ffffff;
+    padding-top: 200px;
+    padding-bottom: 200px;
+}
+
+.scrollspySite
+{
+    position: relative;
+    overflow: auto;
+    height: 355px;
+}
+.cor{
+    color: white!important;
+    font-size: larger;
+}
+.fundoBranco
+{
+    border-radius: 4px;
+    padding: 1%;
+    margin-left: 10%;
+    margin-right: 10%;
+    border-radius: 4px;
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.308);
+    color: black;
+    background-color: white;
+}
+.teste{
+    padding:10% !important ;
+}
+.botoes{
+    border-radius: 4px;
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.308);
+    color: white;
+}
+.fundoBranco2
+{
+    border-radius: 4px;
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.308);
+    background-color: burlywood;
+    padding: 1%;
+}
+
+::-webkit-scrollbar {
+    width: 7px;
+}
+  
+::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 7px;
+    border-radius: 7px;
+    background: blueviolet;
+    -webkit-box-shadow: inset 0 0 6px transparent; 
+}
+
+/* footer */
+#myFooter{
+    padding-top:32px;
+}
+
+#myFooter .container{
+    text-align: center;
+}
+
+#myFooter .footer-copyright{
+    margin-bottom: 35px;
+    text-align: center;
+    color: #777;
+}
+
+#myFooter ul{
+    list-style-type: none;
+    padding: 0;
+    margin-bottom: 18px;
+}
+
+#myFooter a{
+    color: #282b2d;
+    font-size: 18px;
+}
+
+#myFooter li{
+    display: inline-block;
+    margin: 0px 15px;
+    line-height: 2;
+}
+
+#myFooter .footer-social{
+    text-align: center;
+    padding-top: 25px;
+    padding-bottom: 25px;
+    background-color: #eee;
+}
+
+#myFooter .fa{
+    font-size: 36px;
+    margin-right: 15px;
+    margin-left: 20px;
+    background-color: white;
+    color: #d0d0d0;
+    border-radius: 51%;
+    padding: 10px;
+    height: 60px;
+    width: 60px;
+    text-align: center;
+    line-height: 43px;
+    text-decoration: none;
+    transition:color 0.2s;
+}
+
+#myFooter .fa-facebook:hover{
+   color: #2b55ff;
+}
+
+#myFooter .fa-facebook:focus{
+    color: #2b55ff; 
+}
+
+#myFooter .fa-instagram:hover{
+    color:purple;
+}
+
+#myFooter .fa-instagram:focus{
+    color:purple;
+}
+
+#myFooter .fa-youtube:hover{
+    color:red;
+}
+
+#myFooter .fa-youtube:focus{
+    color:red;
+}
+
+#myFooter .fa-twitter:hover{
+    color: #00aced;
+
+}
+
+#myFooter .fa-twitter:focus{
+    color:#00aced;
+}
+/* CSS utilizado para posicionar o rodapé no final da página. */
+/* Você pode remover isso. */
+
+.content{
+   flex: 1 0 auto;
+   -webkit-flex: 1 0 auto;
+   min-height: 200px;
+}
+
+#myFooter{
+   flex: 0 0 auto;
+   -webkit-flex: 0 0 auto;
+}
+/*Fim do footer*/
+
+
+/* Configurando labels e inputs */
+
+.label-float{
+position: relative;
+padding-top: 13px;;
+}
+
+.label-float input{
+border: 1px solid lightgrey;
+border-radius: 5px;
+outline: none;
+transition: all .1s linear;
+-webkit-transition: all .1s linear;
+-moz-transition: all .1s linear;
+-webkit-appearance:none;
+color: #777;
+}
+.label-float
+.label-float input:focus{
+border: 2px solid #2b55ff;
+}
+
+.label-float label{
+pointer-events: none;
+position: absolute;
+top: calc(50% - 8px);
+left: 15px;
+font-size: 18px;
+transition: all .1s linear;
+-webkit-transition: all .1s linear;
+-moz-transition: all .1s linear;
+background-color: white; /* cor de fundo do label*/
+box-sizing: border-box;
+color: #777;
+}
+.label-float input:focus:required{
+border: 2px solid #2b55ff; /* cor da borda do input*/
+}
+.label-float input:not(:placeholder-shown) + label{
+font-size: 13px;
+top: 0;
+color: #777;
+}
+.label-float input:focus + label{
+    font-size: 12px;
+    top: 0;
+    color: #2b55ff;   
+}
+
+#validationTooltip01{
+    -webkit-box-shadow: none!important;
+    box-shadow: none !important;
+}
+.needs-validation input:focus:required{
+    border-color: #2b55ff!important;
+}
+.needs-validation input:required{
+    border-color: #777!important;
+}
+/* Fim das configurações de labels e inputs */
+

@@ -1,0 +1,119 @@
+/* Made with love by Mutiullah Samim*/
+
+@import url('https://fonts.googleapis.com/css?family=Numans');
+@font-face {
+     font-family: 'Roboto';
+     src: url('../fonts/Roboto-Regular.ttf') format('truetype');
+
+}
+html,body{
+
+background-image: white;
+background-size: cover;
+background-repeat: no-repeat;
+height: 100%;
+font-family: 'Numans', sans-serif;
+}
+h3{
+  font-family: Roboto!important;
+}
+.container{
+height: 100%;
+align-content: center;
+}
+
+.card{
+height: 500px;
+margin-top: auto;
+margin-bottom: auto;
+width: 450px;
+background-color: white !important;
+border-radius: 10px;
+}
+
+.social_icon span{
+font-size: 60px;
+margin-left: 10px;
+color: #6c38b0;
+}
+
+.social_icon span:hover{
+color: white!important;
+cursor: pointer;
+}
+
+.card-header h3{
+color: white!important;
+}
+
+.social_icon{
+position: absolute;
+right: 20px;
+top: -45px;
+}
+
+.input-group-prepend span{
+width: 50px;
+background-color: #6c38b0;
+color: black;
+border:0 !important;
+}
+
+input:focus{
+outline: 0 0 0 0  !important;
+box-shadow: 0 0 0 0 !important;
+
+}
+
+.remember{
+color: white;
+}
+
+.remember input
+{
+width: 20px;
+height: 20px;
+margin-left: 15px;
+margin-right: 5px;
+}
+
+.login_btn{
+color: white;
+background-color: #1488f5;
+width: 130px;
+font-size: 13px;
+font-family: Roboto;
+text-decoration: none;
+}
+
+.login_btn:hover{
+color: black;
+background-color: white;
+}
+
+.links{
+color: #1b6ad1!important;
+font-family: Roboto;
+margin-left: 25px;
+}
+.linksRecu{
+color: black;
+font: Roboto!important;
+}
+.teste{
+  margin-left: 25px;
+  margin-right: 25px;
+  height: 60px;
+  font-size: 16px;
+}
+.links a{
+margin-left: 4px;
+color: #1488f5!important;
+font-family: Roboto;
+text-decoration: none;
+}
+.imagem{
+  width: 75px;
+  height: 24px;
+  margin-top: 0px;
+}

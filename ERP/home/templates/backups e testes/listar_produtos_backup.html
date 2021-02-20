@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--css-->
+    <link rel="stylesheet" href="../../static/assets/Bootstrap/css/bootstrap.min.css"/>
+
+    <link rel="stylesheet" href="../../static/assets/css/erro404.css">
+    <!--Icons-->
+    <link rel="stylesheet" href="../../static/assets/icons/fontawesome-free-5.12.1-web/css/all.css">
+    <title>Listagem Produtos</title>
+</head>
+<body class="bg-purple">
+
+  <!--Cabeçalho -->
+  <header>
+    <div class="container-fluid">
+    <div class="stars navbar-expand-lg">
+      <div class="custom-navbar">
+        <div class="brand-logo">
+            <img src="http://salehriaz.com/404Page/img/logo.svg" width="80px">
+        </div>
+          <div class="navbar-links">
+              <ul>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle visu" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Produtos
+                  </a>
+                  <div class="dropdown-menu subvisu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="{% url 'cadastro_produto' %}">Cadastrar Produto</a>
+                    <a class="dropdown-item" href="{% url 'listar_produtos' %}">Listar Produtos</a>
+                    <a class="dropdown-item" href="{% url 'listar_estoque' %}">Controle de Estoque</a>
+                </li>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle visu2" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Vendedor
+                  </a>
+                  <div class="dropdown-menu subvisu2" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="{% url 'cadastrar_vendedor' %}">Cadastrar Vendedor</a>
+                    <a class="dropdown-item" href="{% url 'listar_vendedores' %}">Listar Vendedores</a>
+                </li>
+                <li>
+                  <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Frente de Caixa
+                  </a>
+                </li>
+              </ul>
+          </div>
+      </div>
+    </div>
+  </div>
+  </header>
+  <!--Fim Cabeçalho-->
+
+    <section class="mt-5">
+      <div class="container">
+           <!--Produto-->
+          <div class="row">
+            <div class="col-12 col-md-12 ">
+
+              <!--Formulario-->
+              <form class="needs-validation" novalidate>
+
+                <!-- Dados do Produto-->
+                <div class="col-10 col-md-10 fundoBranco">
+                  <div class="row">
+                    <div class="col-12 col-md-8">
+                      <nav class="navbar">
+                          <span class="navbar-text cor">
+                            Produtos Cadastrados
+                          </span>
+                        </nav>
+                    </div>
+                    <div class="col-12 col-md-7 mb-1">
+                        <form method="get" action="{% url 'listar_produtos' %}">
+                          <div class="input-group mt-2">
+                            <input type="text" class="form-control" name="search" placeholder="Procurar Produto" aria-label="Recipient's username" aria-describedby="button-addon2">
+                            <div class="input-group-append">
+                              <button class="btn procurar" type="submit"><i class="fas fa-search"></i></button>
+                            </div>
+                          </div>
+                      </form>
+                    </div>
+                    <div class="col-12 col-md-5 mb-1 mt-2">
+                      <a href="{% url 'cadastro_produto' %}">
+                          <button class="btn btn-danger botoes" type="button">Cadastrar Produto</button>
+                      </a>
+                      <a href="{% url 'listar_estoque' %}">
+                          <button class="btn btn-danger botoes" type="button">Ir para o Estoque</button>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Forms do Produto-->
+                <div class="form-row fundoBranco2">
+                  <!-- conteudo do forms-->
+                  <div class="table-responsive text-center">
+                    <table class="table fundoTabela">
+                      <thead class="cabecalhoTabela text-light">
+                        <tr>
+                          <th scope="col">Código</th>
+                          <th scope="col">Nome</th>
+                          <th scope="col">Valor</th>
+                          <th scope="col">Situação</th>
+                          <th scope="col">Estoque</th>
+                          <th></th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {% for produto in page_obj %}
+                        <tr>
+                          <th scope="row">{{ produto.codigo }}</th>
+                          <td>{{ produto.descricao }}</td>
+                          <td>{{ produto.preco_venda }}</td>
+                          <td>
+                              <div class="avatar-group">
+                                <span class="badge badge-dot mr-4">
+                                    {% if produto.situacao == "A" %}
+                                        <i class="bg-success"></i> {{ produto.get_situacao_display }}
+                                    {% else %}
+                                        <i class="bg-warning"></i> {{ produto.get_situacao_display }}
+                                    {% endif %}
+                                </span>
+                          </td>
+                          <td>{{ produto.total_estoque }}</td>
+                          <td>
+                            <div class="dropdown">
+                              <a class="btn btn-sm btn-icon-only text-dark" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-ellipsis-v"></i>
+                              </a>
+                              <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
+                                <a class="dropdown-item" href="{% url 'remover_produto' produto.id %}">Excluir</a>
+                                <a class="dropdown-item" href="{% url 'alterar_produto' produto.id %}">Editar</a>
+                                <a class="dropdown-item" href="{% url 'listar_estoque' produto.id %}">Estoque</a>
+                              </div>
+                            </div>
+                          </td>
+                        </tr>
+                        {% endfor %}
+                      </tbody>
+                    </table>
+                  </div>
+                  <div class="row">
+                  <div class="col-12 col-md-12">
+                    <nav aria-label="Page navigation">
+                      <ul class="pagination mt-3">
+                        {% if page_obj.has_previous %}
+                        <li class="page-item mr-1">
+                          <a class="page-link" href="{# url 'listar_produtos' #}?page={{ page_obj.previous_page_number }}" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                          </a>
+                        {% else %}
+                        <li class="page-item disabled mr-1">
+                          <a class="page-link" href="" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                          </a>
+                        {% endif %}
+                        </li>
+                        {% for page_number in page_obj.paginator.page_range %}
+                            {% if page_number == page_obj.number %}
+                                <li class="page-item active mr-1">
+                            {% else %}
+                                <li class="page-item mr-1">
+                            {% endif %}
+                                <a class="page-link" href="{# url 'listar_produtos' #}?page={{ page_number }}">{{ page_number }}</a>
+                            </li>
+                        {% endfor %}
+                        {% if page_obj.has_next %}
+                        <li class="page-item mr-1">
+                          <a class="page-link" href="{# url 'listar_produtos' #}?page={{ page_obj.next_page_number }}" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                          </a>
+                        {% else %}
+                        <li class="page-item disabled mr-1">
+                          <a class="page-link" href="{# url 'listar_produtos' #}?page={{ page_obj.next_page_number }}" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                          </a>
+                        {% endif %}
+                        </li>
+                      </ul>
+                    </nav>
+
+                    </div>
+                  </div>
+                </div>
+
+              </form>
+           <!--Fim produto-->
+        </div>
+    </section>
+
+    <!-- Modal Cancelar-->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Cancelar</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            Tem certeza que deseja cancelar o cadastro ?
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+            <button type="button" class="btn btn-primary">Confirmar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--Footer-->
+    <footer class="mt-4" id="myFooter">
+      <div class="footer-social">
+        <a href="" class="social-icons"><i class="fab fa-facebook"></i>/gustavocescon7</a>
+          <a href="" class="social-icons"><i class="fab fa-instagram ml-3"></i>/gustavo.cescon</a>
+          <a href="" class="social-icons"><i class="fab fa-youtube ml-3"></i>/gustavocescon</a>
+          <a href="" class="social-icons"><i class="fab fa-twitter ml-3"></i>/gstvcescon</a>
+        <p class="footer-copyright mt-3">© 2020 Copyright - Gustavo Cescon</p>
+      </div>
+    </footer>
+    <!--Fim footer-->
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="../../static/assets/Bootstrap/js/jquery-3.4.1.slim.min.js"></script>
+    <script src="../../static/assets/Bootstrap/js/popper.min.js"></script>
+    <script src="../../static/assets/Bootstrap/js/bootstrap.min.js"></script>
+    <script src="../../static/assets/scripts/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+{% block title %}Listagem de Produtos{% endblock %}
+{% block content %}
+    <section class="mt-5">
+      <div class="container">
+           <!--Produto-->
+          <div class="row">
+            <div class="col-12 col-md-12 ">
+
+              <!--Formulario-->
+              <form class="needs-validation" novalidate>
+
+                <!-- Dados do Produto-->
+                <div class="col-10 col-md-10 fundoBranco">
+                  <div class="row">
+                    <div class="col-12 col-md-8">
+                      <nav class="navbar">
+                          <span class="navbar-text cor">
+                            Produtos Cadastrados
+                          </span>
+                        </nav>
+                    </div>
+                    <div class="col-12 col-md-7 mb-1">
+                        <form method="get" action="{% url 'listar_produtos' %}">
+                          <div class="input-group mt-2">
+                            <input type="text" class="form-control" name="search" placeholder="Procurar Produto" aria-label="Recipient's username" aria-describedby="button-addon2">
+                            <div class="input-group-append">
+                              <button class="btn procurar" type="submit"><i class="fas fa-search"></i></button>
+                            </div>
+                          </div>
+                      </form>
+                    </div>
+                    <div class="col-12 col-md-5 mb-1 mt-2">
+                      <a href="{% url 'cadastro_produto' %}">
+                          <button class="btn btn-danger botoes" type="button">Cadastrar Produto</button>
+                      </a>
+                      <a href="{% url 'listar_estoque' %}">
+                          <button class="btn btn-danger botoes" type="button">Ir para o Estoque</button>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Forms do Produto-->
+                <div class="form-row fundoBranco2">
+                  <!-- conteudo do forms-->
+                  <div class="table-responsive text-center">
+                    <table class="table fundoTabela">
+                      <thead class="cabecalhoTabela text-light">
+                        <tr>
+                          <th scope="col">Código</th>
+                          <th scope="col">Nome</th>
+                          <th scope="col">Valor</th>
+                          <th scope="col">Situação</th>
+                          <th scope="col">Estoque</th>
+                          <th></th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {% for produto in page_obj %}
+                        <tr>
+                          <th scope="row">{{ produto.codigo }}</th>
+                          <td>{{ produto.descricao }}</td>
+                          <td>{{ produto.preco_venda }}</td>
+                          <td>
+                              <div class="avatar-group">
+                                <span class="badge badge-dot mr-4">
+                                    {% if produto.situacao == "A" %}
+                                        <i class="bg-success"></i> {{ produto.get_situacao_display }}
+                                    {% else %}
+                                        <i class="bg-warning"></i> {{ produto.get_situacao_display }}
+                                    {% endif %}
+                                </span>
+                          </td>
+                          <td>{{ produto.total_estoque }}</td>
+                          <td>
+                            <div class="dropdown">
+                              <a class="btn btn-sm btn-icon-only text-dark" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-ellipsis-v"></i>
+                              </a>
+                              <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
+                                <a class="dropdown-item" href="{% url 'remover_produto' produto.id %}">Excluir</a>
+                                <a class="dropdown-item" href="{% url 'alterar_produto' produto.id %}">Editar</a>
+                                <a class="dropdown-item" href="{% url 'listar_estoque' produto.id %}">Estoque</a>
+                              </div>
+                            </div>
+                          </td>
+                        </tr>
+                        {% endfor %}
+                      </tbody>
+                    </table>
+                  </div>
+                  <div class="row">
+                  <div class="col-12 col-md-12">
+                    <nav aria-label="Page navigation">
+                      <ul class="pagination mt-3">
+                        {% if page_obj.has_previous %}
+                        <li class="page-item mr-1">
+                          <a class="page-link" href="{# url 'listar_produtos' #}?page={{ page_obj.previous_page_number }}" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                          </a>
+                        {% else %}
+                        <li class="page-item disabled mr-1">
+                          <a class="page-link" href="" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                          </a>
+                        {% endif %}
+                        </li>
+                        {% for page_number in page_obj.paginator.page_range %}
+                            {% if page_number == page_obj.number %}
+                                <li class="page-item active mr-1">
+                            {% else %}
+                                <li class="page-item mr-1">
+                            {% endif %}
+                                <a class="page-link" href="{# url 'listar_produtos' #}?page={{ page_number }}">{{ page_number }}</a>
+                            </li>
+                        {% endfor %}
+                        {% if page_obj.has_next %}
+                        <li class="page-item mr-1">
+                          <a class="page-link" href="{# url 'listar_produtos' #}?page={{ page_obj.next_page_number }}" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                          </a>
+                        {% else %}
+                        <li class="page-item disabled mr-1">
+                          <a class="page-link" href="{# url 'listar_produtos' #}?page={{ page_obj.next_page_number }}" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                          </a>
+                        {% endif %}
+                        </li>
+                      </ul>
+                    </nav>
+
+                    </div>
+                  </div>
+                </div>
+
+              </form>
+           <!--Fim produto-->
+        </div>
+    </section>
+
+    <!-- Modal Cancelar-->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Cancelar</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            Tem certeza que deseja cancelar o cadastro ?
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+            <button type="button" class="btn btn-primary">Confirmar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  {% endblock %}

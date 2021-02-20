@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <title>Home </title>
+    {% load static %}
+    <!-- Meus estilos de css -->
+    <link href="{% static "css/home.css" %}" rel="stylesheet">
+    <!-- Fim dos meus estilos de css -->
+
+
+    <!--Css do bootstrap -->
+    <link href="{% static "framework/bootstrap-4.3.1-dist/css/bootstrap.css" %}" rel="stylesheet">
+    <link href="{% static "framework/fontawesome-free-5.9.0-web/css/all.min.css" %}" rel="stylesheet">
+    <!--Fim do css do bootstrap -->
+
+    <!--scripts do bootstrap -->
+    <script src="{% static "framework/jquery-3.3.1/jquery-3.3.1.slim.min.js" %}"></script>
+    <script src="{% static "framework/popper/popper.min.js" %}" ></script>
+    <script src="{% static "framework/bootstrap-4.3.1-dist/js/bootstrap.js" %}" ></script>
+    <!--fim dos scripts do bootstrap -->
+</head>
+<body>
+<header>
+    <nav class="navbar border-danger border-bottom">
+            <div class="col-md-3">
+                <a class="navbar-brand" href="#">
+                    <img src="{% static "imagens/erp.png" %}" alt="..." class="figura">
+                </a>
+            </div>
+            <div class="col-md-5">
+                <ul class="nav nav-tabs justify-content-center border-bottom-0 ">
+                    <li class="nav-item dropdown ">
+                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Estoques</a>
+                    <div class="dropdown-menu">
+                      <a class="dropdown-item" href="estoques/controledeestoque.html">Controle de estoques</a>
+                      <a class="dropdown-item" href="estoques/pedidosdecompra.html">Pedidos de compra</a>
+                      <a class="dropdown-item" href="estoques/notadeentrada.html">Nota de entrada</a>
+                      <a class="dropdown-item" href="estoques/relatorios.html">Relatórios</a>
+                      <div class="dropdown-divider"></div>
+                      <a class="dropdown-item" href="#">Link isolado</a>
+                    </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Contas</a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="contas/frentedecaixa.html">Frente de caixa</a>
+                            <a class="dropdown-item" href="contas/nfc-e.html">NFC-e</a>
+                            <a class="dropdown-item" href="contas/propostascomerciais.html">Propostas comerciais</a>
+                            <a class="dropdown-item" href="contas/pedidosdevenda.html">Pedidos de venda</a>
+                            <a class="dropdown-item" href="contas/comissoes.html">Comissões</a>
+                            <a class="dropdown-item" href="/contas/relatorios.html">Relatórios</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">Link isolado</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Finanças</a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="financas/caixasebancos.html">Caixas e Bancos</a>
+                        <a class="dropdown-item" href="financas/contasapagar.html">Contas a pagar</a>
+                        <a class="dropdown-item" href="financas/contasareceber.html">Contas a receber</a>
+                        <a class="dropdown-item" href="financas/fichafianceira.html">Ficha financeira</a>
+                        <a class="dropdown-item" href="financas/relatorios.html">Relatórios</a>
+                      <div class="dropdown-divider"></div>
+                      <a class="dropdown-item" href="#">Link isolado</a>
+                    </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Cadastros</a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="cadastros/clientesefornecedores.html">Clientes e Fornecedores</a>
+                        <a class="dropdown-item" href="cadastros/produtos.html">Produtos</a>
+                        <a class="dropdown-item" href="cadastros/vendedores.html">Vendedores</a>
+                        <a class="dropdown-item" href="cadastros/relatorios.html">Relatórios</a>
+                      <div class="dropdown-divider"></div>
+                      <a class="dropdown-item" href="#">Link isolado</a>
+                    </div>
+                    </li>
+                    <li class="nav-item">
+                    <a class="nav-link" href="{% url 'logout' %}">Home</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="col-md-3">
+                <div class="configure">
+                    <i class="far fa-question-circle"></i>
+                    <i class="fas fa-wrench"></i>
+                </div>
+            </div>
+            <div class="col-md-1">
+                <img src="{% static "imagens/2.jpg" %}" alt="..." class="rounded-circle">
+            </div>
+    </nav>
+</header>
+        <footer>
+        <div class="row">
+            <nav class="navbar fixed-bottom navbar-light bg-light">
+                <div class="col-md-6">
+                <a class="navbar-brand">Copyright © - Todos os direitos reservados </a>
+                </div>
+                <div class="col-md-6">
+                    <a class="navbar-brand">Redes sociais </a>
+                    <a <i class="fab fa-instagram" href="https://www.instagram.com/?hl=pt-br" target="_blank"></i></a>
+                    <a <i class="fab fa-facebook-square" href="https://www.facebook.com" target="_blank"></i> </a>
+                    <a <i class="fab fa-twitter-square" href="https://twitter.com/login?lang=pt" target="_blank"></i></a>
+                </div>
+            </nav>
+        </div>
+</footer>
+
+</body>
+</html>

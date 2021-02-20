@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+{% extends "base.html" %}
+{% block title %}Listagem de Estoque{% endblock %}
+{% block content %}
+    <section class="mt-5">
+      <div class="container">
+           <!--Produto-->
+          <div class="row">
+            <div class="col-12 col-md-9 ">
+
+              <!--Formulario-->
+              <form class="needs-validation" novalidate>
+                <!-- Dados do Produto-->
+                <div class="col-10 col-md-10 fundoBranco">
+                  <div class="row">
+                    <div class="col-12 col-md-8">
+                      <nav class="navbar">
+                          <span class="navbar-text cor">
+                            Produtos Cadastrados
+                          </span>
+                        </nav>
+                    </div>
+                    <div class="col-12 col-md-8 mb-1">
+                      <div class="input-group mt-2">
+                        <input type="text" class="form-control" placeholder="Procurar Produto" aria-label="Recipient's username" aria-describedby="button-addon2">
+                        <div class="input-group-append">
+                          <button class="btn procurar" type="button"><i class="fas fa-search"></i></button>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-12 col-md-4 mb-1 mt-2">
+                      <button class="btn btn-danger botoes" data-toggle="modal" data-target="#exampleModal" type="button">Incluir Lançamento</button>
+                    </div>
+                  </div>
+                </div>
+                <!-- Forms do Produto-->
+                <div class="form-row fundoBranco2">
+                  <div class="table-responsive text-center">
+                    <table class="table fundoTabela">
+                      <thead class="cabecalhoTabela text-light">
+                        <tr>
+                          <th scope="col">Código</th>
+                          <th scope="col">Nome</th>
+                          <th scope="col">Valor</th>
+                          <th scope="col">Situação</th>
+                          <th scope="col">Estoque</th>
+                          <th></th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <th scope="row">1</th>
+                          <td>Mark</td>
+                          <td>Otto</td>
+                          <td>@mdo</td>
+                          <td>1</td>
+                          <td>
+                            <div class="dropdown">
+                              <a class="btn btn-sm btn-icon-only text-dark" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-ellipsis-v"></i>
+                              </a>
+                              <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
+                                <a class="dropdown-item" href="{% url 'remover_produto' produto.id %}">Excluir</a>
+                                <a class="dropdown-item" href="{% url 'alterar_produto' produto.id %}">Editar</a>
+                                <a class="dropdown-item" href="{% url 'listar_estoque' produto.id %}">Estoque</a>
+                              </div>
+                            </div>
+                          </td>
+                        </tr>
+                        <tr>
+                          <th scope="row">1</th>
+                          <td>Mark</td>
+                          <td>Otto</td>
+                          <td>@mdo</td>
+                          <td>1</td>
+                          <td>
+                            <div class="dropdown">
+                              <a class="btn btn-sm btn-icon-only text-dark" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-ellipsis-v"></i>
+                              </a>
+                              <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
+                                <a class="dropdown-item" href="{% url 'remover_produto' produto.id %}">Excluir</a>
+                                <a class="dropdown-item" href="{% url 'alterar_produto' produto.id %}">Editar</a>
+                                <a class="dropdown-item" href="{% url 'listar_estoque' produto.id %}">Estoque</a>
+                              </div>
+                            </div>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </form>
+            </div>
+           <!--Fim produto-->
+           <div class="col-12 col-md-3">
+            <div class="row mt-3">
+              <div class="col-12 col-md-12">
+              <div class="table-responsive text-center">
+                <table class="table fundoTabela">
+                  <thead class="cabecalhoTabela text-light">
+                    <tr>
+                      <th scope="col">Entrada</th>
+                      <th scope="col">Valor</th>
+                      <th></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Mark</td>
+                      <td>Otto</td>
+                      <td>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              </div>
+              <div class="col-12 col-md-12">
+                <div class="table-responsive text-center">
+                  <table class="table fundoTabela">
+                    <thead class="cabecalhoTabela text-light">
+                      <tr>
+                        <th scope="col">Saída</th>
+                        <th scope="col">Valor</th>
+                        <th></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Mark</td>
+                        <td>Otto</td>
+                        <td>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+              </div>
+              </div>
+              <div class="col-12 col-md-12">
+                <div class="table-responsive text-center">
+                  <table class="table fundoTabela">
+                    <thead class="cabecalhoTabela text-light">
+                      <tr>
+                        <th scope="col">Valor Total</th>
+                        <th></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Mark</td>
+                        <td>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+              </div>
+              </div>
+            </div>
+           </div>
+          </div>
+      </div>
+    </section>
+
+    <!-- Modal incluir lançamento-->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Novo Lançamento</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form class="needs-validation" novalidate>
+              <div class="form-row">
+                <div class="col-12 col-md-12 mb-4">
+                  <div class="label-float">
+                    <input type="text" class="form-control" id="validationTooltip01" placeholder=" " required/>
+                    <label for="validationTooltip01">Nome</label>
+                    <div class="invalid-tooltip">
+                      Insira a marca
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12 col-md-12 mb-4">
+                  <div class="label-float">
+                    <input type="text" class="form-control" id="validationTooltip01" placeholder=" " required/>
+                    <label for="validationTooltip01">Quantidade</label>
+                    <div class="invalid-tooltip">
+                      Insira a marca
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12 col-md-12 mb-4">
+                  <div class="label-float">
+                    <input type="text" class="form-control" id="validationTooltip01" placeholder=" " required/>
+                    <label for="validationTooltip01">Preço Uni.</label>
+                    <div class="invalid-tooltip">
+                      Insira a marca
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12 col-md-12 mb-4">
+                  <div class="label-float">
+                    <input type="text" class="form-control" id="validationTooltip01" placeholder=" " required/>
+                    <label for="validationTooltip01">Tipo</label>
+                    <div class="invalid-tooltip">
+                      Insira a marca
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                <button type="submit" class="btn btn-primary">Confirmar</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,30 @@
+{% load static %}
+
+<html lang="pt-br">
+
+    <head>
+      <meta charset="utf-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <title>
+        Argon Dashboard - Free Dashboard for Bootstrap 4 by Creative Tim
+      </title>
+      <!-- Favicon -->
+      <link href="{% static "assets/img/brand/favicon.png" %}" rel="icon" type="image/png">
+      <!-- Fonts -->
+      <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+      <!-- Icons -->
+      <link href="{% static "assets/js/plugins/nucleo/css/nucleo.css" %}" rel="stylesheet" />
+      <link href="{% static "assets/js/plugins/@fortawesome/fontawesome-free/css/all.min.css" %}" rel="stylesheet" />
+      <!-- CSS Files -->
+      <link href="{% static "assets/css/argon-dashboard.css" %}" rel="stylesheet" />
+    </head>
+    
+    <body class="">
+        {% block content %}
+        {% endblock %}
+        <!--   Core   -->
+        <script src="{% static "assets/js/plugins/jquery/dist/jquery.min.js" %}"></script>
+        <script src="{% static "assets/js/plugins/bootstrap/dist/js/bootstrap.bundle.min.js" %}"></script>
+        <!--   Argon JS   -->
+        <script src="{% static "assets/js/argon-dashboard.min.js?v=1.1.0" %}"></script>
+    </body>
